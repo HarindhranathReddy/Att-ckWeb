@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Advanced Web Scanner Results</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Advanced Web Scanner Results</h1>
+    {% if results %}
+        <h2>Subdomains</h2>
+        <ul>
+        {% for item in results.subdomains %}
+            <li>{{ item }}</li>
+        {% endfor %}
+        </ul>
+        
+        <h2>Live Hosts</h2>
+        <ul>
+        {% for item in results.live_hosts %}
+            <li>{{ item }}</li>
+        {% endfor %}
+        </ul>
+        
+        <h2>Wayback URLs</h2>
+        <ul>
+        {% for item in results.wayback_urls %}
+            <li>{{ item }}</li>
+        {% endfor %}
+        </ul>
+        
+        <h2>Endpoints (gospider)</h2>
+        <ul>
+        {% for item in results.gospider_urls %}
+            <li>{{ item }}</li>
+        {% endfor %}
+        </ul>
+        
+        <h2>Nuclei Results</h2>
+        <ul>
+        {% for item in results.nuclei_results %}
+            <li>{{ item }}</li>
+        {% endfor %}
+        </ul>
+        
+        <h2>Custom Scanner Results</h2>
+        <ul>
+        {% for item in results.custom_results %}
+            <li>
+                <strong>URL:</strong> {{ item.url }}<br>
+                <strong>Vulnerability:</strong> {{ item.vulnerability }}<br>
+                <strong>Details:</strong> {{ item.details }}
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No results available.</p>
+    {% endif %}
+</body>
+</html>
