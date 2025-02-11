@@ -1,0 +1,8 @@
+
+---
+
+```plaintext
+Flask==2.2.2
+requests==2.28.1
+beautifulsoup4==4.11.1
+openai==0.27.0
