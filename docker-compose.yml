@@ -1,0 +1,18 @@
+version: '3'
+services:
+  scanner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    command: python scanner/integrated_scanner.py -d example.com
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    command: python web/app.py
